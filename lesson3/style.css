@@ -17,3 +17,11 @@ body {
   width: 30px;
   border-radius: 50%;
 }
+
+#block {
+    width: 800px;
+    height: 600px;
+    border: 2px solid #cc0000;
+    margin: 0 auto;
+    position: relative;
+}

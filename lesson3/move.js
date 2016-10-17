@@ -1,5 +1,8 @@
-var kv = document.getElementById("kv");
+var player = document.getElementById("player");
 var kvadr = document.querySelectorAll(".kv");
+var block = document.getElementById("block1");
+
+var STEP = 5;
 
 for(var i = 0; i < kvadr.length; i++) {
     console.log(kvadr[i]);
@@ -10,50 +13,77 @@ for(var i = 0; i < kvadr.length; i++) {
 
 document.onkeydown = function(e){
 
-    console.log(e.keyCode)
 
-    // top 38
-    if(e.keyCode == 38 ) {
+    switch (e.keyCode) {
+        case 38:
+            if(!isBlock("top"))
+                player.style.top = player.offsetTop - 5 + "px";
+            break;
+        case 39:
+            if(!isBlock("right"))
+                player.style.left = player.offsetLeft + 5 + "px";
 
-        if(kv.offsetTop <= 0) {
+            break;
+        case 40:
+            if(!isBlock("down"))
+                player.style.top = player.offsetTop + 5 + "px";
+            break;
+        case 37:
+            if(!isBlock("left"))
+                player.style.left = player.offsetLeft - 5 + "px";
+            break;
+        default:
             return;
-        }
-        kv.style.top = kv.offsetTop - 10 + "px";
-
     }
 
-    // right 39
-    if(e.keyCode == 39 ) {
 
-        if(kv.offsetLeft >= 740) {
-            return;
-        }
-        kv.style.left = kv.offsetLeft + 10 + "px";
+};
 
 
-    }
+var isBlock = function(move) {
 
-    // down 40
-    if(e.keyCode == 40 ) {
+    // #block1
+    switch (move) {
+        case "top":
+            if(
 
-        if(kv.offsetTop >= 540) {
-            return;
-        }
-        kv.style.top = kv.offsetTop + 10 + "px";
+                block.offsetTop <= player.offsetTop &&
+                (block.offsetTop + block.offsetHeight + STEP) > player.offsetTop &&
+                block.offsetLeft <= player.offsetLeft &&
+                (block.offsetLeft + block.offsetWidth) >= (player.offsetLeft + player.offsetWidth)
+            ) {
 
-    }
+                return true;
+            }
 
-    // left 37
-    if(e.keyCode == 37 ) {
+            break;
+        case "down":
+            if(
 
-        if(kv.offsetLeft <= 0) {
-            return;
-        }
-        kv.style.left = kv.offsetLeft - 10 + "px";
+                block.offsetTop >= player.offsetTop &&
+                (block.offsetTop + block.offsetHeight + STEP) < player.offsetTop &&
+                block.offsetLeft <= player.offsetLeft &&
+                (block.offsetLeft + block.offsetWidth) >= (player.offsetLeft + player.offsetWidth)
+            ) {
+
+                return true;
+            }
+
+            break;
+        case "left":
+
+            break;
+        case "right":
+
+            break;
 
     }
 
 };
+
+
+
+
 
 /**
  * Создать игры

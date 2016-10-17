@@ -18,10 +18,54 @@ body {
   border-radius: 50%;
 }
 
-#block {
-    width: 800px;
+#matrix {
+    width: 520px;
     height: 600px;
     border: 2px solid #cc0000;
     margin: 0 auto;
     position: relative;
+    background: url("images/pac-man/pacmanworld.jpg") no-repeat;
 }
+
+#player {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: yellow;
+}
+
+.block {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px;
+    height: 20px;
+    background: #cc0000;
+}
+
+#block1 {
+    top: 63px;
+    left: 36px;
+    width: 452px;
+    height: 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+#block2 {
+    top: 72px;
+    left: 252px;
+    width: 18px;
+    height: 64px;
+    border-radius: 0 0 5px 5px;
+}
+
+#block3 {
+    top: 72px;
+    left: 36px;
+    width: 10px;
+    height: 153px;
+    border-radius: 0 0 0 20px;
+}
+
